@@ -31,11 +31,11 @@ class InventoryMenu : public Menu {
 		//Metoda pozwalaj¹ca na wyrzucanie/podnoszenie przedmiotów.
 		void dropPick() {
 			if(mode) { //Podnoszenie przedmiotów.
-				items->addItem(itemsToDrop,itemsToPick->item); //Dodajemy przedmiot do listy przedmiotów, które mo¿na wyrzuciæ.
-				items->remItem(itemsToPick); //Usuwamy przedmiot z listy przedmiotów mo¿liwych do podniesienia.
+				items->addItem(itemsToDrop,il->item); //Dodajemy przedmiot do listy przedmiotów, które mo¿na wyrzuciæ.
+				items->remItem(il); //Usuwamy przedmiot z listy przedmiotów mo¿liwych do podniesienia.
 			} else { //Wyrzucanie przedmiotów.
-				items->addItem(itemsToPick,itemsToDrop->item); //Dodajemy przedmiot do listy przedmiotów, które mo¿na podnieœæ.
-				items->remItem(itemsToDrop); //Usuwamy przedmiot z listy przedmiotów mo¿liwych do wyrzucenia.
+				items->addItem(itemsToPick,il->item); //Dodajemy przedmiot do listy przedmiotów, które mo¿na podnieœæ.
+				items->remItem(il); //Usuwamy przedmiot z listy przedmiotów mo¿liwych do wyrzucenia.
 			}
 		}
 	
