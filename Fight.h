@@ -15,7 +15,7 @@ class Fight {
 			items->addItem(itemsOnTheGround,item);
 			
 			system("cls");
-			cout << "Ork defeated! Great sword was dropped.";
+			cout << "Ork defeated! Great sword was dropped." << endl;
 			system("pause");
 			
 			//W tej wersji nie ma zaimplementowanej walki. Ork zawsze zostaje pokonany i upuszcza wielki miecz.
