@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=4
+UnitCount=7
 
 [VersionInfo]
 Major=1
@@ -60,8 +60,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit2]
-FileName=Fight.cpp
+[Unit3]
+FileName=Items.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -70,7 +70,27 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit3]
+[Unit5]
+FileName=Menu.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=MainMenu.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
 FileName=header.h
 CompileCpp=1
 Folder=
@@ -81,7 +101,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=Items.cpp
+FileName=Fight.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=InventoryMenu.h
 CompileCpp=1
 Folder=
 Compile=1
