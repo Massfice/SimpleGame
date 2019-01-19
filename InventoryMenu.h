@@ -33,9 +33,11 @@ class InventoryMenu : public Menu {
 			if(mode) { //Podnoszenie przedmiotów.
 				items->addItem(itemsToDrop,il->item); //Dodajemy przedmiot do listy przedmiotów, które mo¿na wyrzuciæ.
 				items->remItem(il); //Usuwamy przedmiot z listy przedmiotów mo¿liwych do podniesienia.
+				itemsToPick = il;
 			} else { //Wyrzucanie przedmiotów.
 				items->addItem(itemsToPick,il->item); //Dodajemy przedmiot do listy przedmiotów, które mo¿na podnieœæ.
 				items->remItem(il); //Usuwamy przedmiot z listy przedmiotów mo¿liwych do wyrzucenia.
+				itemsToDrop = il;
 			}
 		}
 	
