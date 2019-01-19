@@ -19,10 +19,10 @@ class InventoryMenu : public Menu {
 		void swap() {
 			if(mode) {
 				menuText = "Drop...";
-				changeListOptions(itemsToDrop);
+				il = itemsToDrop;
 			} else {
 				menuText = "Pick...";
-				changeListOptions(itemsToPick);
+				il = itemsToPick;
 			}
 			
 			mode = !mode;

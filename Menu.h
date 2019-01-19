@@ -33,11 +33,6 @@ class Menu {
 			
 			cout << endl;
 		}
-		
-		//Metoda umo¿liwiaj¹ca modyfikacjê menu opcji, jeœli zajdzie taka potrzeba.
-		void changeListOptions(ItemList* il) {
-			this->il = il;
-		}
 			
 	public:
 		
