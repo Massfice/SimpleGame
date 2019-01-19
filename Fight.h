@@ -1,8 +1,8 @@
 //Plik zawiera klasê u¿ywan¹ podczas walki z przeciwnikami.
 
 class Fight {
-		
-	public:
+		public:
+			
 		void getReward(ItemList* & itemsOnTheGround) { //Otrzymywanie nagrody za wygran¹ walkê.
 			
 			Item* item = new Item;

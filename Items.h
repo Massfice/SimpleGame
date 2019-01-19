@@ -17,8 +17,7 @@ struct ItemList {
 		
 
 class Items {
-		
-	public:
+		public:
 		
 		//Metoda wyboru nastêpnego przedmiotu na liœcie:
 		void nextItem(ItemList* & il) {

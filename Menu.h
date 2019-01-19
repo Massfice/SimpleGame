@@ -2,6 +2,7 @@
 
 class Menu {
 	protected:
+		
 		ItemList* il; //Menu zawiera listê "przedmiotów", a w³aœciwie opcji.
 		string menuText; //Tekst menu.
 		bool isRunning; //Czy menu jest aktywne?
@@ -32,10 +33,15 @@ class Menu {
 			
 			cout << endl;
 		}
+		
+		//Metoda umo¿liwiaj¹ca modyfikacjê menu opcji, jeœli zajdzie taka potrzeba.
+		void changeListOptions(ItemList* il) {
+			this->il = il;
+		}
 			
 	public:
 		
-		Menu(ItemList* il, string menuText) {
+		Menu(ItemList* & il, string & menuText) {
 			this->il = il;
 			this->menuText = menuText;
 			this->isRunning = true;
@@ -47,16 +53,22 @@ class Menu {
 		//ustawiona jest w nastêpuj¹cy sposób: S - go down, W - go up, k - action
 		//Lista opcji wyœwietlana jest od góry do do³u (na górze pierwszy element na liœcie, poni¿ej nastêpne), dlatego nastêpne elementy
 		//na liœcie znajduj¹ siê poni¿ej (klawisz S). Analogicznie poprzednie elementy (klawisz W).
-		void changeOption() {
+		void changeOptions() {
 			char c;
 			while(isRunning) {
 				c = _getch(); //Czekaj na podanie znaku.
 		
-				switch(c) { //Wykonaj odpowiedni¹ opcjê.
-					case 's': items->nextItem(il); refreshScreen(); break; //Za ka¿d¹ zmian¹ opcji, odœwie¿a siê ekran.
-					case 'w': items->prevItem(il); refreshScreen(); break;
+				switch(c) {  //Za ka¿d¹ zmian¹ opcji, odœwie¿a siê ekran.
+					case 's': items->nextItem(il); refreshScreen(); break; //scroll DOWN
+					case 'w': items->prevItem(il); refreshScreen(); break; //scroll UP
 					case 'k': execute(); refreshScreen(); break; //Podejmij akcjê (execute), a po zakoñczeniu akcji, odœwie¿ ekran.
 				}
 			}
+		}
+		
+		//Metoda umo¿liwiaj¹ca ponown¹ aktywacjê danego menu.
+		void makeRunning() {
+			refreshScreen();
+			isRunning = true;
 		}
 };
