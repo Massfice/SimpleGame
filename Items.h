@@ -1,12 +1,10 @@
 //Plik zawieraja struktury przedmiotów, listy przedmiotów (itemów), a tak¿e metody modyfikuj¹ce strukturê listy przedmiotów.
 
-//#include "header.h" //Do³¹czamy nag³ówek. Dziêki temu nag³ówek wystarczy zmodyfikowaæ raz i bêdzie mia³o to wp³yw na wszystkie pliki z nag³ówkiem.
-
 //Struktura przedmiotów.
 struct Item {
-	int id; //Parametr ten okreœla identyfikator (id) danego przedmiotu.
+	int id; //Parametr ten okreœla identyfikator (id) danego przedmiotu lub ID opcji. Nie stworzono jeszcze ¿adnych przedmiotów, wiêc póki co
+			//parametr ten bêdzie okreœla³ iloœæ miejsca w ekwipunku zajmowan¹ przez przedmiot.
 	string name; //Nazwa danego przedmiotu.
-	int slots; //Parametr ten okreœla iloœæ miejsca w ekwipunku jaki dany przedmiot zajmuje.
 };
 
 //Struktura listy przedmiotów: (Lista dwukierunkowa, cykliczna)
