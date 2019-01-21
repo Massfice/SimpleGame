@@ -13,6 +13,7 @@ class Fight {
 			
 			system("cls");
 			cout << "Ork defeated! Great sword was dropped." << endl;
+			cout << " ";
 			system("pause");
 			
 			//W tej wersji nie ma zaimplementowanej walki. Ork zawsze zostaje pokonany i upuszcza wielki miecz.

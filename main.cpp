@@ -32,6 +32,7 @@ int main() {
 	if(mainMenu == NULL) mainMenu = new MainMenu(il,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
 	mainMenu->changeOptions();
 	
+	cout << " ";
 	system("pause");
 	return 0;
 }

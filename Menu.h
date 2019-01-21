@@ -13,7 +13,7 @@ class Menu {
 		void refreshScreen() { //Metoda odpowiedzialna za wyœwietlanie i odœwie¿anie wygl¹du menu.
 			if(il != NULL) { //Robimy to jedynie wtedy, kiedy lista nie jest pusta.
 				system("cls");
-				cout << " " << menuText << endl << endl; //Wypisanie tekstu menu, podanego jako parametr konstruktora.
+				cout << endl << " " << menuText << endl << endl; //Wypisanie tekstu menu, podanego jako parametr konstruktora.
 			
 				/* Wypisanie wszystkich pozycji w menu i zaznaczenie aktualnie aktywnego elementu (cil) za pomoc¹ gwiazdki.
 					Lista najpierw nale¿y zapamiêtaæ bie¿¹cy element w osobnej zmiennej.
@@ -36,9 +36,10 @@ class Menu {
 				cout << endl;
 			} else {
 				system("cls");
-				cout << " " << menuText << endl << endl;
+				cout << endl << " " << menuText << endl << endl;
 				cout << emptyMenuText << endl;
 				isRunning = false;
+				cout << " ";
 				system("pause");
 			}
 		}

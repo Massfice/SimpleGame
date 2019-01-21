@@ -23,16 +23,34 @@ class MainMenu : public Menu {
 				//Itemy, które mo¿na wyrzuciæ.
 				
 				Item* item = new Item;
-				item->name = "Long Sword";
+				item->name = "Long Sword [ Required Slots: 7 ]";
+				item->id = 7;
+				
+				items->addItem(itemsToDrop,item);
+				
+				item = new Item;
+				item->name = "Healing Potion [ Required Slots: 2 ]";
 				item->id = 2;
 				
 				items->addItem(itemsToDrop,item);
 				
 				item = new Item;
-				item->name = "Healing Potion";
-				item->id = 3;
+				item->name = "Healing Potion [ Required Slots: 2 ]";
+				item->id = 2;
 				
-				items->addItem(itemsToDrop,item);		
+				items->addItem(itemsToDrop,item);
+				
+				item = new Item;
+				item->name = "Healing Potion [ Required Slots: 2 ]";
+				item->id = 2;
+				
+				items->addItem(itemsToDrop,item);
+				
+				item = new Item;
+				item->name = "Healing Potion [ Required Slots: 2 ]";
+				item->id = 2;
+				
+				items->addItem(itemsToDrop,item);	
 						
 				item = new Item;
 				item->name = "Don't drop anything else and pick something";
@@ -50,8 +68,8 @@ class MainMenu : public Menu {
 				
 				//Itemy, które mo¿na podnieœæ.
 				item = new Item;
-				item->name = "Bow";
-				item->id = 4;
+				item->name = "Bow [ Required Slots: 8 ]";
+				item->id = 8;
 				
 				items->addItem(itemsToPick,item);
 								
