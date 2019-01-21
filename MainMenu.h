@@ -69,9 +69,11 @@ class MainMenu : public Menu {
 				
 				items->seekBegin(itemsToPick);
 				
-				inventoryMenu = new InventoryMenu(itemsToDrop,itemsToPick,"Pick...");
+				//Tworzenie menu ekwipunku
+				inventoryMenu = new InventoryMenu(itemsToDrop,itemsToPick,"Pick...","No items...");
 				
 				inventoryMenu->changeOptions();
+				
 			} else {
 				inventoryMenu->makeRunning();
 				inventoryMenu->changeOptions();
@@ -83,6 +85,10 @@ class MainMenu : public Menu {
 	public:
 		
 		MainMenu(ItemList* il, string menuText) : Menu(il,menuText) {
+			inventoryMenu = NULL;
+		}
+		
+		MainMenu(ItemList* il, string menuText, string emptyMenuText) : Menu(il,menuText,emptyMenuText) {
 			inventoryMenu = NULL;
 		}
 		

@@ -14,6 +14,7 @@ int main() {
 
 	//Tworzenie menu g³ównego.
 	ItemList* il = NULL;
+	MainMenu* mainMenu = NULL;
 	
 	Item* item = new Item;
 	item->id = 0;
@@ -27,8 +28,10 @@ int main() {
 	
 	items->addItem(il,item);
 	
-	MainMenu* mainMenu = new MainMenu(il,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
+	//Tworzenie menu g³ównego
+	if(mainMenu == NULL) mainMenu = new MainMenu(il,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
 	mainMenu->changeOptions();
+	
 	system("pause");
 	return 0;
 }

@@ -11,7 +11,7 @@ class InventoryMenu : public Menu {
 			switch(il->item->id) { //Wykonujemy opcjê po identyfikatorze danego "przedmiotu" (opcji).
 				case 0: swap(); refreshScreen(); break; //Zmieniamy tryb dzia³ania menu: wyrzucanie/podnoszenie.
 				case 1: isRunning = false; break; //Przerywamy wykonywanie pêtli i powracamy do poprzedniego menu.
-				default: dropPick(); refreshScreen(); break; //Wyrzucamy lub podnosimy przedmiot (w zale¿noœci od trybu).
+				default: dropPick(); break; //Wyrzucamy lub podnosimy przedmiot (w zale¿noœci od trybu).
 			}
 		}
 		
@@ -43,6 +43,13 @@ class InventoryMenu : public Menu {
 	
 	public:
 		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText) : Menu(itemsToPick,menuText) {
+			this->itemsToDrop = itemsToDrop;
+			this->itemsToPick = itemsToPick;
+			mode = true;
+		}
+		
+		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToPick,menuText,
+		emptyMenuText) {
 			this->itemsToDrop = itemsToDrop;
 			this->itemsToPick = itemsToPick;
 			mode = true;
