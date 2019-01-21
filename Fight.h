@@ -3,16 +3,17 @@
 class Fight {
 		public:
 			
-		void getReward(ItemList* & itemsOnTheGround) { //Otrzymywanie nagrody za wygran¹ walkê.
+		void getReward(ItemList* & itemsToPick) { //Otrzymywanie nagrody za wygran¹ walkê.
 			
 			Item* item = new Item;
-			item->id = 5;
-			item->name = "Wielki Miecz";
+			item->id = 20;
+			item->name = "Great Sword";
 			
-			items->addItem(itemsOnTheGround,item);
+			items->addItem(itemsToPick,item);
 			
 			system("cls");
-			cout << "Ork defeated! Great sword was dropped." << endl;
+			cout << endl;
+			cout << " Ork defeated! Great sword was dropped." << endl;
 			cout << " ";
 			system("pause");
 			

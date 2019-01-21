@@ -83,22 +83,34 @@ class InventoryMenu : public Menu {
 		
 	
 	public:
-		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText) : Menu(itemsToPick,menuText) {
-			this->itemsToDrop = itemsToDrop;
-			this->itemsToPick = itemsToPick;
-			defMenuText = menuText;
+		InventoryMenu(ItemList* itemsToDrop, ItemList* itemsToPick, string menuText) : Menu(itemsToDrop,menuText) {
+			mode = false;
 			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
+			this->itemsToDrop = itemsToDrop;
+			defMenuText = menuText;
+			setItemsToPick(itemsToPick);
 			showSlots();
-			mode = true;
 		}
 		
-		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToPick,menuText,
+		InventoryMenu(ItemList* itemsToDrop, ItemList* itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToDrop,menuText,
 		emptyMenuText) {
+			mode = false;
+			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
 			this->itemsToDrop = itemsToDrop;
-			this->itemsToPick = itemsToPick;
-			defMenuText = menuText; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
-			aSlots = 20;
+			defMenuText = menuText;
+			setItemsToPick(itemsToPick);
 			showSlots();
-			mode = true;
+		}
+		
+		//Setter listy przedmiotów do podniesienia:
+		void setItemsToPick(ItemList* itemsToPick) {
+			this->itemsToPick = itemsToPick;
+			if(mode) il = itemsToPick;
+		}
+		
+		//Getter listy przedmiotów do podniesienia:
+		ItemList* getItemsToPick() {
+			if(mode) return il;
+			else return itemsToPick;
 		}
 };

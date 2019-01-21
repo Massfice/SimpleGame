@@ -18,17 +18,24 @@ int main() {
 	
 	Item* item = new Item;
 	item->id = 0;
-	item->name = "Inventory";
+	item->name = "[ INVENTORY! ]";
+	
+	items->addItem(il,item);
+
+	item = new Item;
+	item->id = 1;
+	item->name = "[ FIGHT WITH TERRIBLE ORC! ]";
 	
 	items->addItem(il,item);
 	
 	item = new Item;
-	item->id = 1;
-	item->name = "Quit";
+	item->id = 2;
+	item->name = "[ QUIT! ]";
 	
 	items->addItem(il,item);
 	
-	//Tworzenie menu g³ównego
+	items->seekBegin(il);
+	
 	if(mainMenu == NULL) mainMenu = new MainMenu(il,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
 	mainMenu->changeOptions();
 	

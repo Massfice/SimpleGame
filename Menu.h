@@ -26,8 +26,8 @@ class Menu {
 				items->seekBegin(il);
 				ItemList* temp = il;
 				do {
-					if(il == cil) cout << " * " << il->item->name << endl;
-					else cout << "   "  << il->item->name << endl;
+					if(il == cil) cout << " * " << il->item->name << endl << endl;
+					else cout << "   "  << il->item->name << endl << endl;
 					items->nextItem(il);
 				} while(il != temp);
 			
@@ -46,7 +46,7 @@ class Menu {
 			
 	public:
 		
-		Menu(ItemList* & il, string menuText) {
+		Menu(ItemList* il, string menuText) {
 			this->il = il;
 			this->menuText = menuText;
 			this->emptyMenuText = "";
@@ -55,7 +55,7 @@ class Menu {
 			refreshScreen(); //Wyœwietlanie Menu na ekranie.
 		}
 		
-		Menu(ItemList* & il, string menuText, string emptyMenuText) {
+		Menu(ItemList* il, string menuText, string emptyMenuText) {
 			this->il = il;
 			this->menuText = menuText;
 			this->emptyMenuText = emptyMenuText;
