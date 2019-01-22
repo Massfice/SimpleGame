@@ -5,6 +5,7 @@ class GameMenu : public Menu {
 	private:
 		
 		InventoryMenu* inventoryMenu;
+		FightMenu* fightMenu;
 		ItemList* itemsToPick; //Klasa ta pamiêta listê przedmiotów do podniesienia, poniewa¿ z poziomu tego menu mo¿na j¹ zmieniaæ,
 								//w przeciwieñstwie do listy przedmiotów do wyrzucenia.
 								
@@ -15,6 +16,13 @@ class GameMenu : public Menu {
 				case 1: goFight(); break;
 				case 2: isRunning = false; break; //Powrót do Menu G³ównego.
 			}
+		}
+		
+		//Metoda inicjuj¹ca menu
+		void initMenu() {
+			this->inventoryMenu = NULL;
+			this->fightMenu = NULL;
+			createItemsToPickList();			
 		}
 								
 		//Otwieramy menu ekwipunku.
@@ -59,14 +67,32 @@ class GameMenu : public Menu {
 			
 			isRunning = false;
 			
-			FightMenu* fight = new FightMenu(NULL,"");
-			fight->getReward(itemsToPick);
+			if(fightMenu == NULL) {
+				
+				ItemList* il2 = NULL;
+				
+				Item* item = new Item;
+				item->id = 0;
+				item->name = "[ BACK! ]";
+				
+				items->addItem(il2,item);
+				
+				fightMenu = new FightMenu(il2,"You face an enemy. What should you do?");
+				fightMenu->changeOptions();
+				
+			} else {
+				fightMenu->makeRunning();
+				fightMenu->changeOptions();
+			}
 			
 			isRunning = true;
 		}
 		
 		//Metoda tworz¹ca listê itemów do podniesienia
 		void createItemsToPickList() {
+			
+			itemsToPick = NULL;
+			
 			//Itemy, które mo¿na podnieœæ.
 			
 			Item* item = new Item;
@@ -122,14 +148,10 @@ class GameMenu : public Menu {
 		public:
 			
 		GameMenu(ItemList* il, string menuText) : Menu(il,menuText) {
-			this->inventoryMenu = NULL;
-			this->itemsToPick = NULL;
-			createItemsToPickList();
+			initMenu();
 		}
 		
 		GameMenu(ItemList* il, string menuText, string emptyMenuText) : Menu(il,menuText,emptyMenuText) {
-			this->inventoryMenu = NULL;
-			this->itemsToPick = NULL;
-			createItemsToPickList();
+			initMenu();
 		}
 };

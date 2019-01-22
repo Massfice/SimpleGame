@@ -4,17 +4,24 @@ class FightMenu : public Menu {
 		private:
 			
 			void execute() {
-				
+				switch(il->item->id) {
+					case 0: isRunning = false; break;
+				}
 			}
+			
+		//Metoda inicjuj¹ca menu
+		void initMenu() {
+					
+		}
 			
 		public:
 			
 		FightMenu(ItemList* il, string menuText) : Menu(il,menuText) {
-			
+			initMenu();
 		}
 		
 		FightMenu(ItemList* il, string menuText, string emptyMenuText) : Menu(il,menuText,emptyMenuText) {
-			
+			initMenu();
 		}
 			
 			void getReward(ItemList* & itemsToPick) { //Otrzymywanie nagrody za wygran¹ walkê.

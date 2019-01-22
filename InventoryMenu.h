@@ -19,6 +19,7 @@ class InventoryMenu : public Menu {
 		
 		//Metoda inicjuj¹ca menu
 		void initMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick) {
+			defMenuText = menuText;
 			mode = false;
 			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
 			this->itemsToDrop = itemsToDrop;
@@ -96,15 +97,11 @@ class InventoryMenu : public Menu {
 	
 	public:
 		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText) : Menu(itemsToDrop,menuText) {
-			defMenuText = menuText;
-			emptyMenuText = "";
 			initMenu(itemsToDrop,itemsToPick);
 		}
 		
 		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToDrop,menuText,
 		emptyMenuText) {
-			defMenuText = menuText;
-			this->emptyMenuText = emptyMenuText;
 			initMenu(itemsToDrop,itemsToPick);
 		}
 };

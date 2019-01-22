@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=Fight.h
+FileName=FightMenu.h
 CompileCpp=1
 Folder=
 Compile=1
