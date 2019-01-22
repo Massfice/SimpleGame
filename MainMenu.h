@@ -3,134 +3,62 @@
 class MainMenu : public Menu {
 	private:
 		
-		InventoryMenu* inventoryMenu;
-		ItemList* itemsToPick; //Klasa ta pamiêta listê przedmiotów do podniesienia, poniewa¿ z poziomu tego menu mo¿na j¹ zmieniaæ,
-								//w przeciwieñstwie do listy przedmiotów do wyrzucenia.
+		GameMenu* gameMenu;
 		
 		void execute() {
 			switch(il->item->id) { //Wykonujemy opcjê po identyfikatorze danego "przedmiotu" (opcji).
-				case 0: goInventory(); break;
-				case 1: goFight(); break;
-				case 2: isRunning = false; break; //Przerywamy wykonywanie programu.
+				case 0: goPlay(); break;
+				case 2: isRunning = false; break; //Powrót do Menu G³ównego.
 			}
 		}
 		
-		//Otwieramy menu ekwipunku.
-		void goInventory() {
+		//W³¹czamy grê
+		void goPlay() {
 			
 			isRunning = false;
 			
-			if(inventoryMenu == NULL) {
-				ItemList* itemsToDrop = NULL;
-				
-				//Itemy, które mo¿na wyrzuciæ.	
-				//Na pocz¹tku brak.		
+			if(gameMenu == NULL) {
+				ItemList* il2 = NULL;
+	
 				Item* item = new Item;
-				item->name = "[ PICK SOMETHING! ]";
 				item->id = 0;
-				
-				items->addItem(itemsToDrop,item);
-				
+				item->name = "[ INVENTORY! ]";
+		
+				items->addItem(il2,item);
+
 				item = new Item;
-				item->name = "[ RETURN TO MAIN MENU! ]";
 				item->id = 1;
-				
-				items->addItem(itemsToDrop,item);
-				
-				items->seekBegin(itemsToDrop);
-				
-				//Tworzenie menu ekwipunku
-				inventoryMenu = new InventoryMenu(itemsToDrop,itemsToPick,"Drop...");
-				
-				inventoryMenu->changeOptions();
+				item->name = "[ FIGHT WITH TERRIBLE ORC! ]";
+	
+				items->addItem(il2,item);
+	
+				item = new Item;
+				item->id = 2;
+				item->name = "[ RETURN TO MAIN MENU! ]";
+	
+				items->addItem(il2,item);
+	
+				items->seekBegin(il2);
+	
+				gameMenu = new GameMenu(il2,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
+				gameMenu->changeOptions();
 				
 			} else {
-				inventoryMenu->makeRunning();
-				inventoryMenu->setItemsToPick(itemsToPick);
-				inventoryMenu->changeOptions();
+				gameMenu->makeRunning();
+				gameMenu->changeOptions();				
 			}
 			
-			itemsToPick = inventoryMenu->getItemsToPick();
 			isRunning = true;
-		}
-		
-		//Walczymy z orkiem:
-		goFight() {
-			
-			isRunning = false;
-			
-			Fight* fight = new Fight();
-			fight->getReward(itemsToPick);
-			
-			isRunning = true;
-		}
-		
-		//Metoda tworz¹ca listê itemów do podniesienia
-		void createItemsToPickList() {
-			//Itemy, które mo¿na podnieœæ.
-			
-			Item* item = new Item;
-			item->name = "Long Sword [ Required Slots: 7 ]";
-			item->id = 7;
-				
-			items->addItem(itemsToPick,item);
-				
-			item = new Item;
-			item->name = "Healing Potion [ Required Slots: 2 ]";
-			item->id = 2;
-				
-			items->addItem(itemsToPick,item);
-				
-			item = new Item;
-			item->name = "Mana Potion [ Required Slots: 2 ]";
-			item->id = 2;
-				
-			items->addItem(itemsToPick,item);
-				
-			item = new Item;
-			item->name = "Power Potion [ Required Slots: 2 ]";
-			item->id = 2;
-				
-			items->addItem(itemsToPick,item);
-				
-			item = new Item;
-			item->name = "Holy Potion [ Required Slots: 2 ]";
-			item->id = 2;
-				
-			items->addItem(itemsToPick,item);
-			item = new Item;
-			item->name = "Bow [ Required Slots: 8 ]";
-			item->id = 8;
-				
-			items->addItem(itemsToPick,item);
-								
-			item = new Item;
-			item->name = "[ DROP SOMETHING! ]";
-			item->id = 0;
-				
-			items->addItem(itemsToPick,item);
-				
-			item = new Item;
-			item->name = "[ RETURN TO MAIN MENU! ]";
-			item->id = 1;
-				
-			items->addItem(itemsToPick,item);
-				
-			items->seekBegin(itemsToPick);
 		}
 	
 	public:
 	
 		MainMenu(ItemList* il, string menuText) : Menu(il,menuText) {
-			this->inventoryMenu = NULL;
-			this->itemsToPick = NULL;
-			createItemsToPickList();
+			this->gameMenu = NULL;
 		}
 		
 		MainMenu(ItemList* il, string menuText, string emptyMenuText) : Menu(il,menuText,emptyMenuText) {
-			this->inventoryMenu = NULL;
-			this->itemsToPick = NULL;
-			createItemsToPickList();
+			this->gameMenu = NULL;
 		}
 		
 };

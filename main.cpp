@@ -7,6 +7,7 @@
 #include "Fight.h"
 #include "Menu.h"
 #include "InventoryMenu.h"
+#include "GameMenu.h"
 #include "MainMenu.h"
 
 
@@ -14,17 +15,10 @@ int main() {
 
 	//Tworzenie menu g³ównego.
 	ItemList* il = NULL;
-	MainMenu* mainMenu = NULL;
 	
 	Item* item = new Item;
 	item->id = 0;
-	item->name = "[ INVENTORY! ]";
-	
-	items->addItem(il,item);
-
-	item = new Item;
-	item->id = 1;
-	item->name = "[ FIGHT WITH TERRIBLE ORC! ]";
+	item->name = "[ PLAY! ]";
 	
 	items->addItem(il,item);
 	
@@ -36,7 +30,7 @@ int main() {
 	
 	items->seekBegin(il);
 	
-	if(mainMenu == NULL) mainMenu = new MainMenu(il,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
+	MainMenu* mainMenu = new MainMenu(il,"Use W to scroll UP | Use S to scroll DOWN | Use K to EXECUTE");
 	mainMenu->changeOptions();
 	
 	cout << " ";

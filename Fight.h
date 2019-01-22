@@ -7,7 +7,7 @@ class Fight {
 			
 			Item* item = new Item;
 			item->id = 20;
-			item->name = "Great Sword";
+			item->name = "Great Sword [ Required Slots: 20 ]";
 			
 			items->addItem(itemsToPick,item);
 			
