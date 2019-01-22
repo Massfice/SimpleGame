@@ -34,7 +34,7 @@ class GameMenu : public Menu {
 				items->addItem(itemsToDrop,item);
 				
 				item = new Item;
-				item->name = "[ BACK! ]";
+				item->name = "[ BACK! ]\n";
 				item->id = 1;
 				
 				items->addItem(itemsToDrop,item);
@@ -48,11 +48,9 @@ class GameMenu : public Menu {
 				
 			} else {
 				inventoryMenu->makeRunning();
-				inventoryMenu->setItemsToPick(itemsToPick);
 				inventoryMenu->changeOptions();
 			}
 			
-			itemsToPick = inventoryMenu->getItemsToPick();
 			isRunning = true;
 		}
 		
@@ -72,6 +70,18 @@ class GameMenu : public Menu {
 			//Itemy, które mo¿na podnieœæ.
 			
 			Item* item = new Item;
+			item->name = "[ DROP SOMETHING! ]";
+			item->id = 0;
+				
+			items->addItem(itemsToPick,item);
+				
+			item = new Item;
+			item->name = "[ BACK! ]\n";
+			item->id = 1;
+				
+			items->addItem(itemsToPick,item);
+			
+			item = new Item;
 			item->name = "Long Sword [ Required Slots: 7 ]";
 			item->id = 7;
 				
@@ -103,18 +113,6 @@ class GameMenu : public Menu {
 			item = new Item;
 			item->name = "Bow [ Required Slots: 8 ]";
 			item->id = 8;
-				
-			items->addItem(itemsToPick,item);
-								
-			item = new Item;
-			item->name = "[ DROP SOMETHING! ]";
-			item->id = 0;
-				
-			items->addItem(itemsToPick,item);
-				
-			item = new Item;
-			item->name = "[ BACK! ]";
-			item->id = 1;
 				
 			items->addItem(itemsToPick,item);
 				

@@ -12,7 +12,7 @@ class InventoryMenu : public Menu {
 		void execute() {
 			switch(il->item->id) { //Wykonujemy opcjê po identyfikatorze danego "przedmiotu" (opcji).
 				case 0: swap(); break; //Zmieniamy tryb dzia³ania menu: wyrzucanie/podnoszenie.
-				case 1: isRunning = false; break; //Przerywamy wykonywanie pêtli i powracamy do poprzedniego menu.
+				case 1: isRunning = false; items->seekBegin(il); break; //Przerywamy wykonywanie pêtli i powracamy do poprzedniego menu.
 				default: dropPick(); break; //Wyrzucamy lub podnosimy przedmiot (w zale¿noœci od trybu).
 			}
 		}
@@ -22,11 +22,13 @@ class InventoryMenu : public Menu {
 			if(mode) {
 				defMenuText = "Drop...";
 				il = itemsToDrop;
-				showSlots();
+				items->seekBegin(il);
+				refreshScreen();
 			} else {
 				defMenuText = "Pick...";
 				il = itemsToPick;
-				showSlots();
+				items->seekBegin(il);
+				refreshScreen();
 			}
 			
 			mode = !mode;
@@ -52,11 +54,11 @@ class InventoryMenu : public Menu {
 				itemsToDrop = il;
 			}
 			
-			showSlots();
+			refreshScreen();
 		}
 		
 		//Metoda wyœwietlaj¹ca iloœæ dostêpnych slotów: (Format: X / Y, gdzie X to zajête miejsce, a Y maksymalne dostêpne)
-		void showSlots() {
+		void refreshScreen() { //showSlots
 			menuText = defMenuText;
 			
 			if(il != NULL) {
@@ -77,19 +79,20 @@ class InventoryMenu : public Menu {
 				menuText.append("                                        [ Available Slots: " );
 				menuText.append(buff);
 				menuText.append(" / 20 ]");
-				refreshScreen();
+				
+				Menu::refreshScreen();
 			}
 		}
 		
 	
 	public:
-		InventoryMenu(ItemList* itemsToDrop, ItemList* itemsToPick, string menuText) : Menu(itemsToDrop,menuText) {
+		InventoryMenu(ItemList* itemsToDrop, ItemList* & itemsToPick, string menuText) : Menu(itemsToDrop,menuText) {
 			mode = false;
 			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
 			this->itemsToDrop = itemsToDrop;
 			defMenuText = menuText;
 			setItemsToPick(itemsToPick);
-			showSlots();
+			refreshScreen();
 		}
 		
 		InventoryMenu(ItemList* itemsToDrop, ItemList* itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToDrop,menuText,
@@ -99,18 +102,11 @@ class InventoryMenu : public Menu {
 			this->itemsToDrop = itemsToDrop;
 			defMenuText = menuText;
 			setItemsToPick(itemsToPick);
-			showSlots();
+			refreshScreen();
 		}
 		
 		//Setter listy przedmiotów do podniesienia:
 		void setItemsToPick(ItemList* itemsToPick) {
 			this->itemsToPick = itemsToPick;
-			if(mode) il = itemsToPick;
-		}
-		
-		//Getter listy przedmiotów do podniesienia:
-		ItemList* getItemsToPick() {
-			if(mode) return il;
-			else return itemsToPick;
 		}
 };
