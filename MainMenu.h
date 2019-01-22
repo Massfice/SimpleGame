@@ -28,7 +28,7 @@ class MainMenu : public Menu {
 
 				item = new Item;
 				item->id = 1;
-				item->name = "[ FIGHT WITH TERRIBLE ORC! ]";
+				item->name = "[ FIGHT! ]";
 	
 				items->addItem(il2,item);
 	

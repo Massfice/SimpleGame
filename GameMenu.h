@@ -59,7 +59,7 @@ class GameMenu : public Menu {
 			
 			isRunning = false;
 			
-			Fight* fight = new Fight();
+			FightMenu* fight = new FightMenu(NULL,"");
 			fight->getReward(itemsToPick);
 			
 			isRunning = true;

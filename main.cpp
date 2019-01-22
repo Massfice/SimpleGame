@@ -4,8 +4,8 @@
 
 //Do³¹czamy pliki nag³ówkowe poszczególnych klas.
 #include "Items.h"
-#include "Fight.h"
 #include "Menu.h"
+#include "FightMenu.h"
 #include "InventoryMenu.h"
 #include "GameMenu.h"
 #include "MainMenu.h"

@@ -17,6 +17,15 @@ class InventoryMenu : public Menu {
 			}
 		}
 		
+		//Metoda inicjuj¹ca menu
+		void initMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick) {
+			mode = false;
+			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
+			this->itemsToDrop = itemsToDrop;
+			this->itemsToPick = itemsToPick;
+			refreshScreen();			
+		}
+		
 		//Metoda zmieniaj¹ca tryb dzia³ania ekwipunku. Mo¿na albo wyrzuciæ przedmioty na ziemiê, albo je podnieœæ (dwie ró¿ne listy).
 		void swap() {
 			if(mode) {
@@ -86,27 +95,16 @@ class InventoryMenu : public Menu {
 		
 	
 	public:
-		InventoryMenu(ItemList* itemsToDrop, ItemList* & itemsToPick, string menuText) : Menu(itemsToDrop,menuText) {
-			mode = false;
-			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
-			this->itemsToDrop = itemsToDrop;
+		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText) : Menu(itemsToDrop,menuText) {
 			defMenuText = menuText;
-			setItemsToPick(itemsToPick);
-			refreshScreen();
+			emptyMenuText = "";
+			initMenu(itemsToDrop,itemsToPick);
 		}
 		
-		InventoryMenu(ItemList* itemsToDrop, ItemList* itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToDrop,menuText,
+		InventoryMenu(ItemList* & itemsToDrop, ItemList* & itemsToPick, string menuText, string emptyMenuText) : Menu(itemsToDrop,menuText,
 		emptyMenuText) {
-			mode = false;
-			aSlots = 20; //Maksymalnie w ekwipunku mo¿na mieæ przedmioty o maksymalnej iloœci slotów: 20.
-			this->itemsToDrop = itemsToDrop;
 			defMenuText = menuText;
-			setItemsToPick(itemsToPick);
-			refreshScreen();
-		}
-		
-		//Setter listy przedmiotów do podniesienia:
-		void setItemsToPick(ItemList* itemsToPick) {
-			this->itemsToPick = itemsToPick;
+			this->emptyMenuText = emptyMenuText;
+			initMenu(itemsToDrop,itemsToPick);
 		}
 };
