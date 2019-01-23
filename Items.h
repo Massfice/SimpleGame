@@ -41,7 +41,7 @@ class Items {
 		}
 			
 		//Metoda dodaj¹ca itemy do listy:
-		void addItem (ItemList* & il, Item* item) {
+		void addItem (ItemList* & il, Item* & item) {
 			if(il == NULL) { //Je¿eli lista przedmiotów nie istnieje (jest NULLem):
 				il = new ItemList; //Stwórz now¹ listê.
 				il->item = item; //Zapisz przedmiot na liœcie.

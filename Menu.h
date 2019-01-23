@@ -46,7 +46,7 @@ class Menu {
 			
 	public:
 		
-		Menu(ItemList* il, string menuText) {
+		Menu(ItemList* & il, string menuText) {
 			this->il = il;
 			this->menuText = menuText;
 			this->emptyMenuText = "";
@@ -55,7 +55,7 @@ class Menu {
 			refreshScreen(); //Wyœwietlanie Menu na ekranie.
 		}
 		
-		Menu(ItemList* il, string menuText, string emptyMenuText) {
+		Menu(ItemList* & il, string menuText, string emptyMenuText) {
 			this->il = il;
 			this->menuText = menuText;
 			this->emptyMenuText = emptyMenuText;
@@ -76,7 +76,7 @@ class Menu {
 				switch(c) {  //Za ka¿d¹ zmian¹ opcji, odœwie¿a siê ekran.
 					case 's': items->nextItem(il); refreshScreen(); break; //scroll DOWN
 					case 'w': items->prevItem(il); refreshScreen(); break; //scroll UP
-					case 'k': execute(); if(il != NULL) refreshScreen(); break; //Podejmij akcjê (execute), a po zakoñczeniu akcji, odœwie¿ ekran.
+					case 'k': execute(); refreshScreen(); break; //Podejmij akcjê (execute), a po zakoñczeniu akcji, odœwie¿ ekran.
 				}
 			}
 			

@@ -49,6 +49,7 @@ class MainMenu : public Menu {
 			}
 			
 			isRunning = true;
+			items->seekBegin(il);
 		}
 	
 	public:
