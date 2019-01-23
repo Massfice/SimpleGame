@@ -4,12 +4,21 @@ class MainMenu : public Menu {
 	private:
 		
 		GameMenu* gameMenu;
+		ConfirmMenu* confirmMenu;
 		
 		void execute() {
 			switch(il->item->id) { //Wykonujemy opcjê po identyfikatorze danego "przedmiotu" (opcji).
 				case 0: goPlay(); break;
-				case 2: isRunning = false; break; //Powrót do Menu G³ównego.
+				case 2: goQuit(); break; //Powrót do Menu G³ównego.
 			}
+		}
+		
+		void goQuit() {
+			if(confirmMenu == NULL) confirmMenu = new ConfirmMenu("Are you sure, you want to Quit?");
+			
+			if(confirmMenu->isConfirmed()) isRunning = false;
+			
+			items->seekBegin(il);
 		}
 		
 		//W³¹czamy grê
@@ -55,10 +64,12 @@ class MainMenu : public Menu {
 	public:
 	
 		MainMenu(ItemList* il, string menuText) : Menu(il,menuText) {
+			this->confirmMenu = NULL;
 			this->gameMenu = NULL;
 		}
 		
 		MainMenu(ItemList* il, string menuText, string emptyMenuText) : Menu(il,menuText,emptyMenuText) {
+			this->confirmMenu = NULL;
 			this->gameMenu = NULL;
 		}
 		

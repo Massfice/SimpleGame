@@ -6,6 +6,7 @@
 #include "Items.h"
 #include "Enemy.h"
 #include "Menu.h"
+#include "ConfirmMenu.h"
 #include "FightMenu.h"
 #include "InventoryMenu.h"
 #include "GameMenu.h"

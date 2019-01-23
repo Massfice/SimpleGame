@@ -139,10 +139,12 @@ class GameMenu : public Menu {
 				enemies[2]->name = "Orc Chieftain";
 				enemies[2]->il = enemyInventory2;
 				
+				enemies[3] = NULL;
+				
 				//Tworzenie menu walki:
 				
 				fightMenu = new FightMenu(il2,"You face an enemy. What should you do?",itemsToDrop,itemsToPick,enemies,
-				3); //sizeof(enemies)/sizeof(Enemy)
+				countEnemies(enemies)); //sizeof(enemies)/sizeof(Enemy)
 				fightMenu->changeOptions();
 				
 			} else {
